@@ -1,7 +1,7 @@
 {
     "name": "edu2work/cloud",
     "version": "1.0.0",
-    "description": "An SDK transfers your images to the cloud.",
+    "description": "An SDK transfers your images to the cloud for Laravel 5|6|7|8|9.",
     "keywords": [
         "storage",
         "cloud",
@@ -11,7 +11,7 @@
         "media"
     ],
     "homepage": "https://github.com/HoangThienToan/media",
-    "license": "LGPL-3.0-or-later",
+    "license": "MIT",
     "type": "library",
     "authors": [
         {
@@ -40,5 +40,26 @@
         "psr-4": {
             "Edu2work\\Media\\Tests\\": "tests/"
         }
-    }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "9.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Edu2work\\Media\\MediaEdServiceProvider"
+            ],
+            "aliases": {
+                "DataTables": "Edu2work\\Media\\Client"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

@@ -86,4 +86,4 @@ class MediaEdServiceProvider extends ServiceProvider
 //     // ...
 //     'Media' => edu2work\media\MediaHelper::class,
 // ],
-// {!! MediaHelper::renderMedia($imageUrl, $altText) !!}
+// {!! Media::img($imageUrl, $altText) !!}
