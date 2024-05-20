@@ -1,0 +1,44 @@
+{
+    "name": "edu2work/cloud",
+    "version": "1.0.0",
+    "description": "An SDK transfers your images to the cloud.",
+    "keywords": [
+        "storage",
+        "cloud",
+        "filesystem",
+        "backup",
+        "edu2work-api",
+        "media"
+    ],
+    "homepage": "https://github.com/HoangThienToan/media",
+    "license": "LGPL-3.0-or-later",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Toan Hoang",
+            "email": "toanthien978@gmail.com",
+            "homepage": "https://edu2work.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^6.5 || ^7.0",
+        "illuminate/cache": ">=5.1.0",
+        "illuminate/container": ">=5.1.0",
+        "illuminate/filesystem": ">=5.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Edu2work\\Media\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Edu2work\\Media\\Tests\\": "tests/"
+        }
+    }
+}
