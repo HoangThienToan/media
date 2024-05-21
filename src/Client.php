@@ -6,6 +6,7 @@ namespace Edu2work\Media;
 // use edu2work\media\Exceptions\NotFoundException;
 // use edu2work\media\Exceptions\ValidationException;
 use Edu2work\Media\Http\Client as HttpClient;
+use Edu2work\Media\Config;
 use Illuminate\Cache\CacheManager;
 use Illuminate\Container\Container;
 use Illuminate\Filesystem\Filesystem;
@@ -39,8 +40,9 @@ class Client
      * @throws CacheException
      */
     public function __construct(string $key,  array $options = [])
-    {
-        $this->key = $key;
+    {   
+        $config = new Config;
+        $this->key = $config->EduKey();
         
         if ($key) {
             throw new \Exception('Please provide "key"');

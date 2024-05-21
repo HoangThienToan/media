@@ -16,8 +16,9 @@ class Config
      *
      * @param  \Illuminate\Contracts\Config\Repository  $repository
      */
-    public function __construct(Repository $repository)
+    public function __construct()
     {
+        $repository = new Repository;
         $this->repository = $repository;
     }
 

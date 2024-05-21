@@ -6,16 +6,12 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Edu2work\Media\Client;
 use Edu2work\Media\Config;
+use Illuminate\Contracts\Config\Repository;
+
 
 class MediaEdServiceProvider extends ServiceProvider
 {
 
-    protected $key ='';
-
-    public function __construct(Config $Config)
-    {
-        $this->key = $Config->EduKey();
-    }
 
     /**
      * Register services.
@@ -25,7 +21,7 @@ class MediaEdServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(Client::class, function ($app) {
-            return new Client($this->key);
+            return new Client();
         });
     }
 
@@ -36,20 +32,20 @@ class MediaEdServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $engines = (array) config('datatables.engines');
-        foreach ($engines as $engine => $class) {
-            $engine = Str::camel($engine);
+        // $engines = (array) config('datatables.engines');
+        // foreach ($engines as $engine => $class) {
+        //     $engine = Str::camel($engine);
 
-            if (!method_exists(DataTables::class, $engine) && !DataTables::hasMacro($engine)) {
-                DataTables::macro($engine, function () use ($class) {
-                    if (!call_user_func_array([$class, 'canCreate'], func_get_args())) {
-                        throw new \InvalidArgumentException();
-                    }
+        //     if (!method_exists(DataTables::class, $engine) && !DataTables::hasMacro($engine)) {
+        //         DataTables::macro($engine, function () use ($class) {
+        //             if (!call_user_func_array([$class, 'canCreate'], func_get_args())) {
+        //                 throw new \InvalidArgumentException();
+        //             }
 
-                    return call_user_func_array([$class, 'create'], func_get_args());
-                });
-            }
-        }
+        //             return call_user_func_array([$class, 'create'], func_get_args());
+        //         });
+        //     }
+        // }
     }
 
     /**
@@ -66,15 +62,15 @@ class MediaEdServiceProvider extends ServiceProvider
         }
     }
 
-    /**
-     * Check if app uses Lumen.
-     *
-     * @return bool
-     */
-    protected function isLumen()
-    {
-        return Str::contains($this->app->version(), 'Lumen');
-    }
+    // /**
+    //  * Check if app uses Lumen.
+    //  *
+    //  * @return bool
+    //  */
+    // protected function isLumen()
+    // {
+    //     return Str::contains($this->app->version(), 'Lumen');
+    // }
 }
 
 //demo with
