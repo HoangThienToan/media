@@ -35,16 +35,15 @@ class Client
 
     /**
      * Client constructor. Accepts the account ID, application key and an optional array of options.
-     * @param string $key
      * @param array $options
      * @throws CacheException
      */
-    public function __construct(string $key,  array $options = [])
+    public function __construct(array $options = [])
     {   
         $config = new Config;
         $this->key = $config->EduKey();
         
-        if ($key) {
+        if (!$this->key) {
             throw new \Exception('Please provide "key"');
         }
 
